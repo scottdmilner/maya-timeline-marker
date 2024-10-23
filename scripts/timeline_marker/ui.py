@@ -2,7 +2,11 @@ import json
 from maya import mel
 from maya import cmds
 from maya.api import OpenMaya
-from PySide2 import QtWidgets, QtGui, QtCore
+
+try:
+    from PySide6 import QtCore, QtGui, QtWidgets
+except ImportError:
+    from PySide2 import QtCore, QtGui, QtWidgets
 
 from timeline_marker import utils
 

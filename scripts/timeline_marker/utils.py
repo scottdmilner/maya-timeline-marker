@@ -3,7 +3,11 @@ from six import integer_types
 from maya import mel
 from maya import cmds
 from maya import OpenMayaUI
-from PySide2 import QtWidgets, QtCore
+
+try:
+    from PySide6 import QtCore, QtWidgets
+except ImportError:
+    from PySide2 import QtCore, QtWidgets
 
 
 def maya_to_qt(name, type_=QtWidgets.QWidget):
