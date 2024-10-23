@@ -1,6 +1,10 @@
 import logging
 from maya import mel
-from PySide2 import QtWidgets, QtGui
+
+try:
+    from PySide6 import QtGui, QtWidgets
+except ImportError:
+    from PySide2 import QtGui, QtWidgets
 
 from timeline_marker.ui import TimelineMarker
 from timeline_marker import utils
