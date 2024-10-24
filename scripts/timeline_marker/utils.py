@@ -1,4 +1,3 @@
-from six import integer_types
 from maya import mel
 from maya import cmds
 from maya import OpenMayaUI
@@ -25,7 +24,7 @@ def maya_to_qt(name, type_=QtWidgets.QWidget):
     if ptr is None:
         ptr = OpenMayaUI.MQtUtil.findMenuItem(name)
     if ptr is not None:
-        ptr = integer_types[-1](ptr)
+        ptr = int(ptr)
         return shiboken.wrapInstance(ptr, type_)
 
     raise RuntimeError("Failed to obtain a handle to '{}'.".format(name))
