@@ -1,12 +1,13 @@
-import shiboken2
 from six import integer_types
 from maya import mel
 from maya import cmds
 from maya import OpenMayaUI
 
 try:
+    import shiboken6 as shiboken
     from PySide6 import QtCore, QtWidgets
 except ImportError:
+    import shiboken2 as shiboken
     from PySide2 import QtCore, QtWidgets
 
 
@@ -25,7 +26,7 @@ def maya_to_qt(name, type_=QtWidgets.QWidget):
         ptr = OpenMayaUI.MQtUtil.findMenuItem(name)
     if ptr is not None:
         ptr = integer_types[-1](ptr)
-        return shiboken2.wrapInstance(ptr, type_)
+        return shiboken.wrapInstance(ptr, type_)
 
     raise RuntimeError("Failed to obtain a handle to '{}'.".format(name))
 
